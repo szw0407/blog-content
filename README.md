@@ -9,3 +9,6 @@ Other pages include:
 None yet
 
 szw0407.github.io
+
+# Build settings
+tmeme:Midnight
