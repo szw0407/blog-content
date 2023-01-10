@@ -1,4 +1,4 @@
-# szw0407.github.io
+# szw0407
 
 Hello, world!
 
