@@ -10,5 +10,3 @@ None yet
 
 szw0407.github.io
 
-# Build settings
-theme:Midnight
