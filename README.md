@@ -1,1 +1,9 @@
 # szw0407.github.io
+
+Hello, world!
+
+This is my first blog page.
+
+Other pages include:
+
+vsblog3.wordpress.com
