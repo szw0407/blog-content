@@ -6,4 +6,4 @@ This is my first blog page.
 
 Other pages include:
 
-vsblog3.wordpress.com
+None yet
