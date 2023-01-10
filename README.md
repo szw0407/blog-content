@@ -7,3 +7,5 @@ This is my first blog page.
 Other pages include:
 
 None yet
+
+szw0407.github.io
