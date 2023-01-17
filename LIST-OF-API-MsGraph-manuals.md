@@ -12,19 +12,19 @@
 
 ## 2. 用户访问权限的获取
 
-登录获取：https://learn.microsoft.com/zh-cn/graph/auth-v2-user
+登录获取：https://learn.microsoft.com/en-us/graph/auth-v2-user
 
-非登录获取：https://learn.microsoft.com/zh-cn/graph/auth-v2-service
+非登录获取：https://learn.microsoft.com/en-us/graph/auth-v2-service
 
 ## 3. 使用API
 
-综述：https://learn.microsoft.com/zh-cn/graph/use-the-api
+综述：https://learn.microsoft.com/en-us/graph/use-the-api
 
-调用：https://learn.microsoft.com/zh-cn/graph/call-api
+调用：https://learn.microsoft.com/en-us/graph/call-api
 
 ## 附录：相关API的信息
 
-Outlook API综述：https://learn.microsoft.com/zh-cn/previous-versions/office/office-365-api/api/version-2.0/use-outlook-rest-api
+Outlook API综述：https://learn.microsoft.com/en-us/previous-versions/office/office-365-api/api/version-2.0/use-outlook-rest-api
 
 *看了几个小时文档后，我已经准备入土了。*
 
@@ -33,25 +33,25 @@ Outlook REST API基于Microsoft Graph。文档比较分散，而且都不大能�
 如果觉得这个东西还有可行性可言，参考下面的链接。
 这个需求的模块或许可以单独成立出一个项目了。
 
-Outlook 日历 API-创建事件：https://learn.microsoft.com/zh-cn/previous-versions/office/office-365-api/api/version-2.0/calendar-rest-operations#CreateEvents
+Outlook 日历 API-创建事件：https://learn.microsoft.com/en-us/previous-versions/office/office-365-api/api/version-2.0/calendar-rest-operations#CreateEvents
 
-Microsoft Graph API-创建事件：https://learn.microsoft.com/zh-cn/graph/api/user-post-events?view=graph-rest-1.0&tabs=http
+Microsoft Graph API-创建事件：https://learn.microsoft.com/en-us/graph/api/user-post-events?view=graph-rest-1.0&tabs=http
 
-Outlook API 完成ToDo任务创建：https://learn.microsoft.com/zh-cn/previous-versions/office/office-365-api/api/version-2.0/task-rest-operations#create-tasks
+Outlook API 完成ToDo任务创建：https://learn.microsoft.com/en-us/previous-versions/office/office-365-api/api/version-2.0/task-rest-operations#create-tasks
 
-Microsoft Graph API 完成ToDo任务的创建：https://learn.microsoft.com/zh-cn/graph/api/todotasklist-post-tasks
+Microsoft Graph API 完成ToDo任务的创建：https://learn.microsoft.com/en-us/graph/api/todotasklist-post-tasks
 
 ## 相关的教程
 
-使用 Microsoft Graph 生成 Python 应用：https://learn.microsoft.com/zh-cn/graph/tutorials/python
+使用 Microsoft Graph 生成 Python 应用：https://learn.microsoft.com/en-us/graph/tutorials/python
 
-使用 Microsoft Graph 生成 Node.js Express 应用：https://learn.microsoft.com/zh-cn/graph/tutorials/node
+使用 Microsoft Graph 生成 Node.js Express 应用：https://learn.microsoft.com/en-us/graph/tutorials/node
 
-针对单页web应用的文档：https://learn.microsoft.com/zh-cn/azure/active-directory/develop/index-spa
+针对单页web应用的文档：https://learn.microsoft.com/en-us/azure/active-directory/develop/index-spa
 
-针对web应用的文档：https://learn.microsoft.com/zh-cn/azure/active-directory/develop/index-web-app
+针对web应用的文档：https://learn.microsoft.com/en-us/azure/active-directory/develop/index-web-app
 
-针对服务器后端脚本的文档：https://learn.microsoft.com/zh-cn/azure/active-directory/develop/index-service
+针对服务器后端脚本的文档：https://learn.microsoft.com/en-us/azure/active-directory/develop/index-service
 
 *个人最开始认为作为在服务器后端脚本，此功能可能开发难度比较低。*
 
