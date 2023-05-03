@@ -1,4 +1,4 @@
-# 解决powershell无法运行ps1脚本的问题
+# 解决powershell无法运行Python venv中activate.ps1脚本的问题
 
 在配置Python虚拟环境的时候，无法运行activate.ps1。
 
@@ -12,4 +12,4 @@ power shell的安全策略，将 nrm 命令视为了不安全脚本，不允许�
 
 通过管理员权限运行powershell，然后输入命令` set-ExecutionPolicy RemoteSigned`
 
-由于可能存在安全性问题，需要用`set-ExecutionPolicy Default`恢复。
+由于可能存在安全性问题，结束过后，可以用`set-ExecutionPolicy Default`恢复。
