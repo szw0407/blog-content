@@ -92,7 +92,7 @@ async def read_item(item_id: int):
     return {"item_id": item_id}
 ```
 
-这样，如果我们访问`/items/123`，返回`{"item_id": 123}`，但是如果我们访问`/items/foo`，则会获得一个 $422$ 的HTTP状态码，表示请求无效，因为`foo`不是一个整数。返回的信息如下：
+这样，如果我们访问`/items/123`，返回`{"item_id": 123}`，但是如果我们访问`/items/foo`，则会获得一个 422 的HTTP状态码，表示请求无效，因为`foo`不是一个整数。返回的信息如下：
 
 ```json
 {
@@ -170,7 +170,7 @@ async def create_item(item: Item):
 
 如果我们访问`/items/`，并且发送一个JSON数据，比如`{"name": "Foo", "price": 42}`，则返回`{"name": "Foo", "description": null, "price": 42.0, "tax": null}`；
 
-同样，如果我们访问`/items/`，并且发送一个JSON数据，比如`{"name": "Foo", "price": "bar"}`，这个请求体校验不通过，会获得一个 $422$ 的HTTP状态码，表示请求无效，因为`price`不是一个浮点数。返回`{"detail":[{"loc":["body","price"],"msg":"value is not a valid float","type":"type_error.float"}]}`。
+同样，如果我们访问`/items/`，并且发送一个JSON数据，比如`{"name": "Foo", "price": "bar"}`，这个请求体校验不通过，会获得一个 422 的HTTP状态码，表示请求无效，因为`price`不是一个浮点数。返回`{"detail":[{"loc":["body","price"],"msg":"value is not a valid float","type":"type_error.float"}]}`。
 
 值得注意的是，在Json中，`null`表示空值，而在Python中，`None`表示空值。二者之间还有一些其他的差异，比如`true`和`false`在Python中分别表示`True`和`False`，`"foo"`和`'foo'`在Python中都表示`"foo"`，但是在JSON中，`"foo"`是合法的，而`'foo'`是不合法的，等等。
 
