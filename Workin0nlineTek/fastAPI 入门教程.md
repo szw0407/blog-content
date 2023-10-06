@@ -220,3 +220,111 @@ async def create_item(item: Item):
 > ![pycharm-example](https://fastapi.tiangolo.com/img/tutorial/body/image05.png)
 > 这并非偶然，整个框架都是围绕该设计而构建。并且在进行任何实现之前，已经在设计阶段经过了全面测试，以确保它可以在所有的编辑器中生效。Pydantic 本身甚至也进行了一些更改以支持此功能。
 
+好了，现在我们已经可以通过这些方法，完成非常基本的API操作了。可以考虑开始写一个简单的API了。
+
+由于我们尚未学习数据库的使用，如果需要往本地存储数据可以暂且使用`json`库，将数据存储在json文件中。这也是我们再很多简单的项目中使用的方法。
+
+### 高级的校验
+
+有的时候我们需要对于参数进行比较复杂的校验，比如我们不仅要求某个查询参数是一个字符串，还要求它的长度在某个范围内，这时候我们就需要使用`Query`函数了。
+
+```python
+from typing import Union
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: Union[str, None] = Query(default=None, max_length=50)):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+这里我们使用`Query`函数对`q`进行了校验，`Query`函数的第一个参数是默认值，第二个参数是最大长度（50），这样我们就可以对`q`进行校验了。
+
+然后我们可以再增加一些校验，比如我们要求`q`的长度至少为3，那么我们可以这样写：
+
+```python
+from typing import Union
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: Union[str, None] = Query(None, min_length=3, max_length=50)):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+这样，如果我们访问`/items/?q=ab`，则会获得一个 422 的HTTP状态码，表示请求无效，因为`q`的长度不足3。返回`{"detail":[{"loc":["query","q"],"msg":"ensure this value has at least 3 characters","type":"value_error.any_str.min_length","ctx":{"limit_value":3}}]}`。
+
+对于更加高级的校验，比如字符串要满足某个格式，我们会使用“正则表达式”。
+
+```python
+from typing import Union
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(
+    q: Union[str, None] = Query(
+        default=None, min_length=3, max_length=50, pattern="^fixedquery$"
+    )
+):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+这个指定的正则表达式的意思是，字符串必须是`fixedquery`，否则就会校验失败。
+
+如果你对所有的这些**正则表达式**概念感到迷茫，请不要担心，这不是必须掌握的内容，可以等需要使用的时候再说。对于许多人来说这都是一个困难的主题。你仍然可以在无需正则表达式的情况下做很多事情。但是，一旦你需要用到并去学习它们时，请了解你已经可以在 FastAPI 中直接使用它们。
+
+需要注意的是，当我们使用`Query`的时候，没有`default`字段，这个值就是必须的。此外，有另一种方法可以显式的声明一个值是必需的，即将默认参数的默认值设为 `...`。对，你没看错，就是三个点构成[省略号](https://docs.python.org/3/library/constants.html#Ellipsis)！就像这个例子：
+
+```python
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: str = Query(default=..., min_length=3)):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+此外，使用`Query`还可以声明它去接收一组值，或换句话来说，接收多个值：
+
+```python
+from typing import List, Union
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: Union[List[str], None] = Query(default=None)):
+    query_items = {"q": q}
+    return query_items
+```
+
+这个时候，我们访问`/items/?q=foo&q=bar`，则返回`{"q": ["foo", "bar"]}`。可以观察一下Swagger文档，我们可以看到`q`的类型是可以填多个值的。
+
+Query还有别的参数，就不多介绍了，可以去查文档~
+
