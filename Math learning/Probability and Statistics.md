@@ -2,6 +2,8 @@
 
 本部分笔记部分参考Dimitri P. Bertsekas & John N. Tsitsiklis的著作<i>Introduction to Probability</i>，并同时参考其他资料整理
 
+本部分的概念不能深究，因为大都不严谨。
+
 ## 样本空间和概率
 
 样本空间的定义基于集合论。

@@ -746,7 +746,9 @@ axis([0 pi/2 0 5])  %设置x范围[0,pi/2]，y范围[0,5]
   etc.
 
 代数方程求解solve可求解符号方程如`solve(ax^2==b)`
+
 或者`solve(ax^3+x)`求解多项式（默认等于0）
+
 或者`solve(x^2+y^3-1,y)`求解二元隐函数
 
 solve还可以求解线性方程组：
@@ -765,6 +767,51 @@ z=(A\b)
 `solve`可返回所有解和条件解
 
 `vpasolve`返回数值求解（默认32位精度）
+
+### Python 计算相关
+
+Python很适合做计算。目前做科学计算方面，Anaconda整合了很多常用的包。受此启发，但是由于Anaconda过于专业、体积庞大（虽然比起MATLAB这根本不算什么），我们选择使用Miniconda自行搭建环境。
+
+首先介绍一下Conda的使用。
+
+首先安装Miniconda，安装完成后在终端中输入这行命令（示例）：
+
+```powershell
+conda create -n $ENV_NAME python=3.10
+```
+
+即可创建一个Python 3.10的环境，名为`$ENV_NAME`。
+
+了解环境搭建之后，我们可以开始学习计算相关的库。
+
+#### Numpy
+
+Numpy是一个线性代数计算库，提供了很多开箱即用的线性代数计算方法。
+
+#### Sympy
+
+Sympy是一个符号计算库，但是似乎与其他的库兼容性很不好，慎用。使用时，需要再计算完后转换数据为常规的类型。
+
+#### Scipy
+
+做科学计算的一个库，封装了很多算法和公式
+#### pandas
+
+pandas是一个基于numpy的数据处理库。其最大的作用就在于数据的读取。默认支持读取CSV文件，同时也能读取处理Excel等文件。
+
+pandas最著名的就是DataFrame了。
+
+#### Matplotlib
+
+一个很著名的画图的库
+
+#### Shapely
+
+一个几何库
+
+#### scikit-opt
+
+这个库看起来很有用，是一个封装了若干个算法的库，专用于做规划。看起来很有用。
 
 ### 规划问题
 
@@ -788,4 +835,12 @@ z=(A\b)
 
 [混合整数线性规划基础：基于问题 - MATLAB & Simulink - MathWorks 中国](https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html)
 
-<iframe src="https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html" width="100%" height="1000px"></iframe>
+<!--iframe src="https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html" width="100%" height="1000px"></iframe-->
+#### 基于模型的规划问题建模
+
+这是更加传统的思路，即选择模型，然后规划建模。这个思路相对普适，但是不再像上文那样开箱即用，那么方便。
+
+规划分为线性规划和非线性规划。线性规划是比较经典的规划模型，相对直观且简单。如果可以通过合理的数学推导，将一个相对复杂的关系，转换为一个线性规划问题，将会大大简化数学模型。
+
+（未完待续）
+
