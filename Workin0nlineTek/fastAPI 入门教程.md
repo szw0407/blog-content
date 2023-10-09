@@ -328,3 +328,101 @@ async def read_items(q: Union[List[str], None] = Query(default=None)):
 
 Query还有别的参数，就不多介绍了，可以去查文档~
 
+### 响应模型
+
+我们可以使用`response_model`参数来指定响应模型，这样我们就可以在Swagger文档中看到响应模型了。
+
+```python
+from typing import List, Union
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
+
+
+@app.post("/items/", response_model=Item)
+async def create_item(item: Item):
+    return item
+```
+
+这里我们使用`response_model`参数来指定响应模型，这样我们就可以在Swagger文档中看到响应模型了。
+
+FastAPI 将使用此 response_model 来：
+
+- 将输出数据转换为其声明的类型。
+- 校验数据。
+- 在 OpenAPI 的路径操作中为响应添加一个 JSON Schema。
+- 并在自动生成文档系统中使用。
+
+但最重要的是，会将输出数据限制在该模型定义内。这意味着，如果我们的代码中有一个 bug，导致返回的数据与模型不匹配，FastAPI 将会抛出一个错误，而不是返回一个错误的数据。
+
+### 响应状态码
+
+我们可以使用`status_code`参数来指定响应状态码。
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.post("/items/", status_code=201)
+async def create_item(name: str):
+    return {"name": name}
+```
+
+这里我们使用`status_code`参数来指定响应状态码。
+
+> #### 什么是状态码？
+>
+> 状态码是一个三位数，第一位表示响应的类型，第二位和第三位表示响应的具体内容。比如`200`表示成功，`404`表示找不到资源，`500`表示服务器内部错误，等等。具体的状态码可以参考[这里](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
+
+### 表单
+
+有时候我们需要使用表单来传递参数，比如我们需要上传文件，这时候我们就需要使用表单了。
+
+```python
+from fastapi import FastAPI, Form
+
+app = FastAPI()
+
+
+@app.post("/login/")
+async def login(username: str = Form(), password: str = Form()):
+    return {"username": username}
+```
+
+这里我们使用`Form`函数来声明参数是表单参数。
+
+> #### 表单是什么？为什么不使用JSON而使用表单？
+>
+> 表单是一种传输数据的方式，它是通过`application/x-www-form-urlencoded`这个MIME类型来传输数据的。这种方式是**最早的**一种传输数据的方式，它的优点是简单易用，缺点是传输的数据格式比较简单，不适合传输复杂的数据。而JSON是一种更加复杂的数据格式，它是通过`application/json`这个MIME类型来传输数据的。JSON的优点是可以传输复杂的数据，缺点是相对复杂，不太容易使用。所以，如果我们需要传输复杂的数据，就使用JSON，如果我们只需要传输简单的数据，就使用表单。
+>
+> 表单在前端页面中使用的非常多，比如登录页面，注册页面，等等。表单在HTML中用`<form>`标签表示，它的`action`属性表示表单提交的地址，`method`属性表示表单提交的方式，`method`属性的值可以是`GET`或者`POST`，`GET`表示通过URL传输数据，`POST`表示通过请求体传输数据。表单不仅可以传输简单的数据，还可以传输文件，这时候需要使用`enctype`属性，它的值可以是`application/x-www-form-urlencoded`或者`multipart/form-data`，前者表示传输的数据是简单的数据，后者表示传输的数据是复杂的数据，比如文件。表单的维护和编写通常不需要复杂的JavaScript代码，所以表单在前端页面中使用的非常多，因为它简单易用。
+
+### 错误处理
+
+我们可以使用`HTTPException`来抛出一个HTTP异常。事实上，当我们使用`raise`关键字抛出一个`HTTPException`时，FastAPI会自动将其作为一个对应的HTTP状态码，并返回一个JSON格式的数据。
+
+```python
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+items = {"foo": "The Foo Wrestlers"}
+
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: str):
+    if item_id not in items:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {"item": items[item_id]}
+```
+
