@@ -382,7 +382,7 @@ async def create_item(name: str):
 
 > #### 什么是状态码？
 >
-> 状态码是一个三位数，第一位表示响应的类型，第二位和第三位表示响应的具体内容。比如`200`表示成功，`404`表示找不到资源，`500`表示服务器内部错误，等等。具体的状态码可以参考[这里](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
+> 状态码是一个三位数，第一位表示响应的类型，第二位和第三位表示响应的具体内容。比如`200`表示成功，`404`表示找不到资源，`500`表示服务器内部错误，等等。具体的状态码可以参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
 
 ### 表单
 
