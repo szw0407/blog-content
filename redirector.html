@@ -7,6 +7,9 @@
     <script>
         function func() {
             var u = document.getElementById("url").value;
+            if (u.indexOf("http://") == -1 && u.indexOf("https://") == -1) {
+                u = "http://" + u;
+            }
             var link = document.getElementById("link");
             link.href = u;
             console.log(u);
