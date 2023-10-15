@@ -76,9 +76,7 @@ auto o = nullptr; // nullptr_t
 
 auto p = std::string("abc"); // std::string
 auto q = std::vector<int>{1, 2, 3}; // std::vector<int>
-auto r = std::map<int, std::string>{{1, "a"}, {2, "b"}}; // std::map<int, std::string>
-auto s = std::make_pair(1, "a"); // std::pair<int, const char*>
-auto t = std::make_tuple(1, "a", 1.0); // std::tuple<int, const char*, double>
+
 ```
 
 #### 0.1.2 decltype
