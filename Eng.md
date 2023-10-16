@@ -7,7 +7,8 @@ Some of the best upcoming material science conferences in 2023 are:
 - **Materials for Sustainable Development Conference**³: This is a new conference that aims to address the challenges and opportunities of developing sustainable materials for various sectors such as energy, environment, health, and transportation. It will be held on **October 16-20** in **Torremolinos**, Spain. It will bring together experts from academia, industry, and government to discuss the latest research and innovations in sustainable materials. It will also include keynote speeches, invited talks, oral presentations, poster presentations, panel discussions, and exhibitions.
 
 These are just some of the many material science conferences that will take place in 2023.
-Sure, I can introduce some information on the conference papers for the three events that I searched for you. Here are some highlights:
+
+Information on the conference papers for the three events and some highlights:
 
 - For the **TMS Annual Meeting & Exhibition**¹, you can find the papers from the various symposia and sessions in the Springer website. Some of the topics covered include advances in pyrometallurgy, new directions in mineral processing, friction stir welding and processing, superalloy 718 and derivatives, magnesium technology, and more. You can also access the supplemental proceedings that contain additional papers on materials science and engineering.
 - For the **SPIE Photonics West OPTO** . The papers will be published in the SPIE Digital Library and indexed by major databases. Some of the topics covered include optoelectronic materials and devices, photonic integration, nanotechnologies in photonics, MOEMS-MEMS in photonics, advanced quantum and optoelectronic applications, semiconductor lasers, LEDs, displays and holography, and more. 
