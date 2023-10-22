@@ -28,7 +28,7 @@ sudo zypper ref -b && sudo zypper dup
 
 启动`yast2`的时候报了个错误：
 
->Qt GUI wanted but not found, falling back to ncurses.
+> Qt GUI wanted but not found, falling back to ncurses.
 
 这个问题我们稍后解决~~（不过应该会很久以后了）~~
 
@@ -41,7 +41,7 @@ Ruby安装了
 Python3安装的是Python3.11，如果要绑定`python`可以运行
 
 ```bash
-sudo ln -sf /usr/bin/python3 /usr/bin/python
+sudo ln -sf /usr/bin/python3 /usr/bin/python  # 实际上是做了一个指向 python3 的软链接
 ```
 
 openSUSE的包管理使用的是rpm，以及专用的zypper
@@ -58,13 +58,11 @@ openSUSE的包管理使用的是rpm，以及专用的zypper
 sudo zypper in -t pattern wsl_gui
 ```
 
-以安装YaST2的GUI举例。理论上安装了YsST2的GUI后，可以输入`yast2`打开GUI，同时输入`yast`打开TUI程序。
+以安装YaST2的GUI举例。理论上安装了YaST2的GUI后，可以输入`yast2`打开GUI，同时输入`yast`打开TUI程序。
 
-YaST理论上内容不止两行，以前我瞎搞过一次，装上了很完整的YaST，但是已经忘记那会安装了什么了。
+<!-- YaST理论上内容不止两行，以前我瞎搞过一次，装上了很完整的YaST，但是已经忘记那会安装了什么了。可能是那个时候直接安装完了桌面环境。 -->
 
 > 码住，后面再折腾。
-> 上次配置这个地方的时候失败了，而且关键是我还不知道问题出在哪里，就搞的系统无法启动了。
-> 现在暂时打算只使用命令行，除非后面再有什么需求
 
 ## 启用systemd
 

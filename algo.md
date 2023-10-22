@@ -6,7 +6,7 @@
 
 从C(C89甚至ANSI C)语言转到C++(C++ 14)，需要增加的一些内容，仅用于算法学习和实现，不涉及工程问题的“刚好够用”的补充。
 
-### 0.0 从C到C++（C++89对比C89，增加的“刚好够用”的补充）
+### 0.0 从C到C++（C++99对比C89，增加的“刚好够用”的补充）
 
 #### 0.0.1 bool
 
@@ -30,13 +30,22 @@ int* a = nullptr;
 int* b = NULL;  // Not recommended in C++ language
 ```
 
-#### 0.0.3 const
+### 0.0.3 const
 
 const 是 C++ 中的关键字，表示常量，可以用于任何类型的变量，包括基本类型、指针、引用、数组、函数、lambda、类、模板、STL容器、STL迭代器、STL算法等等。C89 中没有 const 关键字，但是可以用 #define 宏代替 const 关键字。
 
-### 0.0.4 constexpr
+### 0.0.4 long long
 
-`constexpr` 是 C++ 中的关键字，表示常量表达式，可以用于任何类型的变量，包括基本类型、指针、引用、数组、函数、lambda、类、模板、STL容器、STL迭代器、STL算法等等。C89 中没有 `constexpr` 关键字，但是可以用 #define 宏代替 `constexpr` 关键字。
+long long 是 C++ 中的基本类型，表示长整型，C89 中没有 long long 类型。C89 中有 long 类型，但是 long 类型的长度不够长，不能满足实际的需求，所以 C++ 中增加了 long long 类型。
+
+事实上，在现在的C++语言中，long long 是`__int_64`的别名，而`__int_64`是`long long`的别名，所以`long long`和`__int_64`是等价的；对于更大的数据，可以使用`__int_128`，但是`__int_128`不是标准的C++语言，而是编译器提供的扩展。
+
+```C++
+// Using C++ 14
+// long long
+long long a = 1LL;
+long long b = 1i64;  // Not recommended in C++ language
+```
 
 ### 0.0.5 static_cast
 
@@ -76,7 +85,6 @@ auto o = nullptr; // nullptr_t
 
 auto p = std::string("abc"); // std::string
 auto q = std::vector<int>{1, 2, 3}; // std::vector<int>
-
 ```
 
 #### 0.1.2 decltype
@@ -249,5 +257,4 @@ void postorder(TreeNode* root) {
 
 1. 用一个最大堆，维护前 N 个数，每次遍历到一个数，如果比堆顶小，就把堆顶弹出，把这个数放进去，最后堆里面就是最小的前 N 个数。
 2. 快速排序，但是由于只需要前 N 个数，在快速排序的时候，如果左边的数的个数大于 N，就只对左边的数进行快速排序。
-3. 使用STL中的nth_element函数，这个函数的作用是把第 N 小的数放在第 N 个位置上，左边的数都比它小，右边的数都比它大。
-
+3. 使用STL中的`nth_element`函数，这个函数的作用是把第 N 小的数放在第 N 个位置上，左边的数都比它小，右边的数都比它大。
