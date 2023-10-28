@@ -134,7 +134,7 @@ fcitx5 &
 
 ## 启动 Termux-x11
 
-首先编辑 `~/.termux/ter,ux.properties`，添加以下内容：
+首先编辑 `~/.termux/termux.properties`，添加以下内容：
 
 ```properties
 allow-external-apps=true
