@@ -1,10 +1,12 @@
 # 在 Termux 上安装 Debian 11 并启用桌面环境
 
 > #### 为什么要安装 Debian 11？
+>
 > 最新版本的 Arch Linux 和 Debian 12 Bookworm 的 GUI 安装依赖的一个库，比较新的版本有个 bug 直接导致桌面环境无法启动。Debian 11 Bullseye 是我见到的，唯一一个有先例能正常启动桌面环境的 Proot-distro。
 > 本人的设备是 Samsung Galaxy Tab S7 FE，搭载了骁龙 778G 处理器，6GB RAM 和 128GB ROM，系统是 One UI 5.1.1 （基于 Android 13）；Termux 是 F-Droid 下载的最新版本，其他依赖都用的是理论上的最新版本。
 
 > #### 为什么不用 VNC？
+>
 > VNC 有两个问题，一个是性能问题，另一个是安全问题。性能问题是因为 VNC 是远程桌面，所以会有延迟，而且在 Termux 上，VNC 会占用大量的 CPU 资源；安全问题是因为 VNC 会在本地开放一个端口，会有安全隐患。
 > 相比之下。Termux-x11 可能更加轻量级，而且启动安装由于为了 Termux 优化过，体验应该更好一点，因此我们选择 Termux-x11。
 
@@ -19,7 +21,7 @@
 7. 输入 `pkg install virglrenderer-android` 安装 Virglrenderer 依赖以支持 GPU 3D 加速；输入 `pkg install pulseaudio` 安装 Pulseaudio 依赖以支持音频。
 8. 在 Android 12 以后的版本，要避免 Termux 被杀后台，需要在 ADB shell 里运行（具体可以使用 USB 调试、shizuku + Termux ADB 网络调试等办法）：
 
-    ```
+    ```shell
     settings put global settings_enable_monitor_phantom_procs false
     ```
 
@@ -32,7 +34,7 @@
 1. 登入 [termux/proot-distro: An utility for managing installations of the Linux distributions in Termux.](https://github.com/termux/proot-distro)
 2. 阅读 README 中 Adding distribution 段。理论上应该在 Release 里面找对应于 Debian 11 的旧版本，但是由于他给了个样例而且版本肯定不晚于 Debian 11，所以我们直接用样例，到时候直接升级大版本就好了。
 
-    ```bash
+    ```shell
     DISTRO_NAME="Debian"
     TARBALL_URL['aarch64']="https://github.com/termux/proot-distro/releases/download/v1.10.1/debian-aarch64-pd-v1.10.1.tar.xz"
     TARBALL_SHA256['aarch64']="f34802fbb300b4d088a638c638683fd2bfc1c03f4b40fa4cb7d2113231401a21"
@@ -48,18 +50,19 @@
     # 修改 sources.list 为 清华源 的 bullseye 源，使用 HTTP ，然后用 :wq 保存并退出
     apt update && apt full-upgrade
     ```
+
 5. 更新完了系统，安装好 HTTPS 支持所需的包之后，把源换成 HTTPS，然后安装 `sudo`。
-    
-    ```
+
+    ```bash
     apt install apt-transport-https ca-certificates
     vim /etc/apt/sources.list
     # 修改 sources.list 为 清华源 的 bullseye 源，使用 HTTPS ，然后用 :wq 保存并退出 
     apt update && apt upgrade
     apt install sudo 
     ```
-    
+
 6. 添加普通用户组并创建这个用户，并允许普通用户使用 `sudo`。
-    
+
     ```bash
     groupadd storage
     groupadd wheel
@@ -105,7 +108,7 @@ sudo vim ~/.profile
 
 在文件里添加以下内容：
 
-```properties
+```profile
 LANG=zh_CN.UTF-8
 LC_CTYPE=zh_CN.UTF-8
 LC_NUMERIC=zh_CN.UTF-8
@@ -134,7 +137,7 @@ fcitx5 &
 
 ## 启动 Termux-x11
 
-首先编辑 `~/.termux/termux.properties`，添加以下内容：
+首先编辑 `~/.termux/ter,ux.properties`，添加以下内容：
 
 ```properties
 allow-external-apps=true
@@ -169,7 +172,7 @@ dbus-launch --exit-with-session startxfce4 &
 
 1. 安装 Chromium 的时候，由于安卓的限制，非 Root 用户无法真正地 chmod ，导致 sandbox 的权限在用户，导致 chromium 无法正常启动，并且所有的 electron 软件，包括但不限于 VSCode、QQ ，都无法正常启动。目前本人的办法是，给他们添加上 `--no-sandbox`。应用程序列表里面的快捷方式目录是 `~/.local/share/applications`，可以在里面找到对应的快捷方式，然后修改 `Exec` 一项，添加 `--no-sandbox`。比如：
 
-    ```properties
+    ```toml
     [Desktop Entry]
     Name=Chromium
     Exec=chromium --no-sandbox
@@ -184,7 +187,7 @@ dbus-launch --exit-with-session startxfce4 &
 
 2. 安装WPS Office 的时候不仅需要根据他们的介绍安装依赖，更重要的是，安装`qt5ct`，然后在`~/.profile`里面添加以下内容：
 
-    ```properties
+    ```bash
     export QT_QPA_PLATFORMTHEME=qt5ct
     ```
 
@@ -192,7 +195,7 @@ dbus-launch --exit-with-session startxfce4 &
 
 3. 可以使用 Xfce4 的设置调节 DPI 但是对于 QT 软件（比如 WPS Office）无效，需要在 `~/.profile` 里面添加以下内容：
 
-    ```properties
+    ```bash
     export QT_FONT_DPI=144 # 这里的 DPI 根据自己的设备调节
     ```
 
