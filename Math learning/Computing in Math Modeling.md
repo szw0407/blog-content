@@ -772,7 +772,7 @@ z=(A\b)
 
 Python很适合做计算。目前做科学计算方面，Anaconda整合了很多常用的包。受此启发，但是由于Anaconda过于专业、体积庞大（虽然比起MATLAB这根本不算什么），我们选择使用Miniconda自行搭建环境。
 
-首先介绍一下Conda的使用。
+首先介绍一下Conda的使用。Conda 可以很好地管理和复用虚拟环境。创建虚拟环境的目的是为了隔离不同项目的依赖，避免版本冲突。
 
 首先安装Miniconda，安装完成后在终端中输入这行命令（示例）：
 
@@ -782,11 +782,32 @@ conda create -n $ENV_NAME python=3.10
 
 即可创建一个Python 3.10的环境，名为`$ENV_NAME`。
 
+对于虚拟环境，我们暂时还需要了解一些基本的操作：
+
+```powershell
+conda activate $ENV_NAME  # 激活环境
+conda install $PACKAGE_NAME  # 安装包
+conda install $PACKAGE_NAME=$VERSION  # 安装指定版本的包
+conda install $PACKAGE_NAME1 $PACKAGE_NAME2  # 安装多个包
+conda install -c $CHANNEL_NAME $PACKAGE_NAME  # 安装指定渠道的包
+conda install -c $CHANNEL_NAME $PACKAGE_NAME=$VERSION  # 安装指定渠道的指定版本的包
+conda remove $PACKAGE_NAME  # 删除包
+conda list  # 列出当前环境下的所有包
+conda deactivate  # 退出环境
+conda env list  # 列出所有环境
+conda env remove -n $ENV_NAME  # 删除环境
+conda env export > environment.yml  # 导出环境
+conda env create -f environment.yml  # 导入环境
+conda create -n $NEW_ENV_NAME --clone $ENV_NAME  # 克隆环境
+conda env update -f environment.yml  # 更新环境
+conda env create -f environment.yml -n $ENV_NAME  # 导入环境并指定环境名
+```
+
 了解环境搭建之后，我们可以开始学习计算相关的库。
 
 #### Numpy
 
-Numpy是一个线性代数计算库，提供了很多开箱即用的线性代数计算方法。
+Numpy是一个线性代数计算库，提供了很多开箱即用的线性代数计算方法，包括非常高速的矩阵运算，以及矩阵的各种分解方法。
 
 #### Sympy
 
@@ -795,23 +816,32 @@ Sympy是一个符号计算库，但是似乎与其他的库兼容性很不好，
 #### Scipy
 
 做科学计算的一个库，封装了很多算法和公式
-#### pandas
+
+#### Pandas
 
 pandas是一个基于numpy的数据处理库。其最大的作用就在于数据的读取。默认支持读取CSV文件，同时也能读取处理Excel等文件。
 
-pandas最著名的就是DataFrame了。
+pandas最著名的就是DataFrame了，这是一个二维的数据结构，类似于Excel中的表格。DataFrame的每一列可以是不同的数据类型（整数、浮点数、字符串等）。
 
 #### Matplotlib
 
-一个很著名的画图的库
+一个很著名的画图的库，用法和MATLAB的plot很像
 
 #### Shapely
 
-一个几何库
+一个几何库，可以用于处理几何图形
 
 #### scikit-opt
 
-这个库看起来很有用，是一个封装了若干个算法的库，专用于做规划。看起来很有用。
+这个库看起来很有用，是一个封装了若干个高级算法的库，专用于做规划。看起来很有用，适合简单模型问题的求解。
+
+#### Pyomo
+
+一个专门用于做规划的库。
+
+#### PuLP
+
+一个专门用于做线性规划的库。
 
 ### 规划问题
 
@@ -836,6 +866,7 @@ pandas最著名的就是DataFrame了。
 [混合整数线性规划基础：基于问题 - MATLAB & Simulink - MathWorks 中国](https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html)
 
 <!--iframe src="https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html" width="100%" height="1000px"></iframe-->
+
 #### 基于模型的规划问题建模
 
 这是更加传统的思路，即选择模型，然后规划建模。这个思路相对普适，但是不再像上文那样开箱即用，那么方便。
