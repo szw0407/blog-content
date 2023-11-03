@@ -38,3 +38,29 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+
+## test features
+
+### test code block
+
+```python
+def test():
+    print("hello world")
+```
+
+### test table
+
+| name | age |
+| ---- | --- |
+| tom  | 18  |
+| jerry| 19  |
+
+### test tex
+
+$$
+\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{aligned}
+$$
