@@ -1,3 +1,18 @@
+---
+title: 在 Termux 上安装 Debian 11 并启用桌面环境
+date: 2023-10-29
+tags:
+  - Termux
+  - Debian
+  - Linux
+  - Android
+  - Samsung
+  - Galaxy Tab S7 FE
+  - 骁龙 778G
+  - One UI 5.1.1
+  - Android 13
+  - Termux:X11
+---
 # 在 Termux 上安装 Debian 11 并启用桌面环境
 
 > #### 为什么要安装 Debian 11？

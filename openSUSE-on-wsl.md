@@ -1,3 +1,10 @@
+---
+title: 折腾WSL2 openSUSE的一些记录
+date: 2023
+tags: [Linux, openSUSE, WSL]
+categories: [Linux]
+---
+
 # 折腾WSL2 openSUSE的一些记录
 
 这是本人第一次，从头开始折腾一个Linux系统。本人希望通过这次折腾，学习Linux的基本使用。
