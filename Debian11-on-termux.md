@@ -152,7 +152,7 @@ fcitx5 &
 
 ## 启动 Termux-x11
 
-首先编辑 `~/.termux/ter,ux.properties`，添加以下内容：
+首先编辑 `~/.termux/termux.properties`，添加以下内容：
 
 ```properties
 allow-external-apps=true
@@ -216,6 +216,6 @@ dbus-launch --exit-with-session startxfce4 &
 
     这样可以让那些软件字体大小合理点。
 
-如果想偷懒，可以把这些命令写到一个 shell 文件里面，保存在 Termux 的 `~/.shortcuts/` 目录下，然后在 Termux:Widget 的快捷方式里面添加这个 shell 文件，这样就可以直接启动了。当然注意一下chmod +x。
+如果想偷懒，可以把这些命令写到一个 shell 文件里面，保存在 Termux 的 `~/.shortcuts/` 目录下，然后在 Termux:Widget 的快捷方式里面添加这个 shell 文件，这样就可以直接启动了。当然注意一下`chmod +x`。
 
 值得一提的是 Termux:X11 这个 APP 对于三星的适配还不错，甚至能做到键盘独占。
