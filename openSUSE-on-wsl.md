@@ -1,7 +1,7 @@
 ---
 title: 折腾WSL2 openSUSE的一些记录
 date: 2023
-tags: [Linux, openSUSE, WSL]
+tags: [Linux, openSUSE, WSL, WSL2, Windows]
 categories: [Linux]
 ---
 
