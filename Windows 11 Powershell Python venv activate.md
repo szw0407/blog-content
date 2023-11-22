@@ -1,3 +1,16 @@
+---
+title: Windows 11 Powershell Python venv activate
+date: 2023-03-03 22:01:50
+tags:
+- 技术
+- Python
+- Powershell
+- Windows
+- venv
+categories:
+- 技术
+---
+
 # 解决powershell无法运行Python venv中activate.ps1脚本的问题
 
 在配置Python虚拟环境的时候，无法运行`activate.ps1`。
@@ -8,4 +21,6 @@
 
 通过管理员权限运行powershell，然后输入命令` set-ExecutionPolicy RemoteSigned`。
 
-由于可能存在安全性问题，结束过后，可以用`set-ExecutionPolicy Default`恢复。
+由于可能存在安全性问题，结束后可以用`set-ExecutionPolicy Default`恢复。
+
+这个问题还在安装 scoop 的时候见过，官方也给出了解决方案——就不多说了。
