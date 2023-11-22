@@ -6,6 +6,9 @@ categories:
   - tools
 ---
 
+# Input URL into the box and click the go button
+
+Then click the link to go to the website.
 
 <script>
   function func() {
