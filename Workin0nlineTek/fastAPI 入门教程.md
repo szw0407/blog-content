@@ -1,6 +1,6 @@
 # FastAPI 入门教程
 
-> 由@szw0407编写，献给@0nlineTek-Web-XLS的小伙伴们
+> 由@szw0407编写，献给 0nlineTek-Web 的小伙伴们
 
 在阅读这个教程之前，你需要系统了解一下Python和面向对象的程序设计理念，并且较为熟练地使用Python编写相对功能复杂的程序。
 
