@@ -1,3 +1,17 @@
+---
+title: fastAPI 入门教程
+date: 2023-10-16 12:07:00
+tags:
+- 技术
+- Python
+- fastAPI
+- Web
+- 后端
+- API
+categories:
+- 技术
+---
+
 # FastAPI 入门教程
 
 > 由@szw0407编写，献给 0nlineTek-Web 的小伙伴们

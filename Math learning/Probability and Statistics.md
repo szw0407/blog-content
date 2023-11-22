@@ -1,3 +1,14 @@
+---
+title: 概率论与数理统计
+date: 2023-11-22 23:59:59
+tags:
+- 数学学习
+- 概率论
+- 数理统计
+categories:
+- 学习笔记
+---
+
 # 概率论和数理统计
 
 本部分笔记部分参考 Dimitri P. Bertsekas & John N. Tsitsiklis 的著作*Introduction to Probability*，并同时参考其他资料整理
