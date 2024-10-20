@@ -38,10 +38,10 @@ categories:
 
 本人使用的环境：
 
-- MATLAB R2023A
+- MATLAB R2023b
 - Python 3.10.12, virtual environment created by Conda 4.10.3
-- Pycharm Community 2022.3.3
-- Visual Studio Code 1.80.0
+- Pycharm Community
+- Visual Studio Code
 
 ## 基础使用
 
@@ -59,12 +59,12 @@ MATLAB的GUI是非常方便的，有的时候不需要代码即可完成很多�
 - 绘制子图
 - 导出图像
 
-| 文件格式  | 使用场景           |
-| --------- | ------------------ |
-| fig       | MATLAB             |
-| bmp、tif  | 体积较大的无损格式 |
+| 文件格式     | 使用场景         |
+| -------- | ------------ |
+| fig      | MATLAB       |
+| bmp、tif  | 体积较大的无损格式    |
 | JPEG、PNG | 电子照片压缩       |
-| eps       | $\LaTeX{}$适合     |
+| eps      | $\LaTeX{}$适合 |
 
 ##### 数据统计
 
@@ -262,20 +262,20 @@ c3 =
 
 其他常见的命令：
 
-| MATLAB命令             | 作用                               |
-| ---------------------- | ---------------------------------- |
-| linspace(from,to,nums) | 从from到to等距离取nums个数值       |
-| logspace(0,2,3)        | $10^0$到$10^2$找3个点，即1 10 100  |
-| zeros                  | 零矩阵                             |
-| ones                   | 1矩阵                              |
-| eye                    | 单位矩阵                           |
-| norm                   | 求向量的模                         |
-| rand                   | 随机数矩阵                         |
-| randn                  | 正态分布的随机数矩阵               |
-| randi                  | 有范围的随机数矩阵                 |
-| randperm(x)            | 1~x之间的整数随机排序              |
-| randperm(x,y)          | 1~x之间随机选择y个整数             |
-| diag                   | 将对角线上面的数值返回为一个列向量 |
+| MATLAB命令               | 作用                          |
+| ---------------------- | --------------------------- |
+| linspace(from,to,nums) | 从from到to等距离取nums个数值         |
+| logspace(0,2,3)        | $10^0$到$10^2$找3个点，即1 10 100 |
+| zeros                  | 零矩阵                         |
+| ones                   | 1矩阵                         |
+| eye                    | 单位矩阵                        |
+| norm                   | 求向量的模                       |
+| rand                   | 随机数矩阵                       |
+| randn                  | 正态分布的随机数矩阵                  |
+| randi                  | 有范围的随机数矩阵                   |
+| randperm(x)            | 1~x之间的整数随机排序                |
+| randperm(x,y)          | 1~x之间随机选择y个整数               |
+| diag                   | 将对角线上面的数值返回为一个列向量           |
 
 ##### 索引
 
@@ -839,11 +839,11 @@ pandas最著名的就是DataFrame了，这是一个二维的数据结构，类�
 
 #### Matplotlib
 
-一个很著名的画图的库，用法和MATLAB的plot很像
+一个很著名的画图的库，用法和MATLAB的plot很像。
 
 #### Shapely
 
-一个几何库，可以用于处理几何图形
+一个几何库，可以用于处理几何图形，判断是否存在交点、重叠之类。
 
 #### scikit-opt
 
@@ -879,7 +879,7 @@ pandas最著名的就是DataFrame了，这是一个二维的数据结构，类�
 
 [混合整数线性规划基础：基于问题 - MATLAB & Simulink - MathWorks 中国](https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html)
 
-<!--iframe src="https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html" width="100%" height="1000px"></iframe-->
+<iframe src="https://ww2.mathworks.cn/help/optim/ug/mixed-integer-linear-programming-basics-problem-based.html" width="100%" height="1000px"></iframe>
 
 #### 基于模型的规划问题建模
 

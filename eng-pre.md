@@ -1,14 +1,3 @@
----
-title: Using Library of Shandong University
-date: 2023-10-12
-tags:
-    - Library
-    - Shandong University
-    - presentation
-categories:
-    - Homework
----
-
 # Using Library of Shandong University
 
 ## 1. Introduction
