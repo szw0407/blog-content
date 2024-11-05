@@ -1,15 +1,4 @@
----
-title: 概率论与数理统计
-date: 2023-11-22 23:59:59
-tags:
-- 数学学习
-- 概率论
-- 数理统计
-categories:
-- 学习笔记
----
-
-# 概率论和数理统计
+# 概率论
 
 本部分笔记部分参考 Dimitri P. Bertsekas & John N. Tsitsiklis 的著作*Introduction to Probability*，并同时参考其他资料整理
 
@@ -68,28 +57,28 @@ categories:
 离散概率：$$P({s_1, S_2, \dots , s_n}) = P(s_1) + P(s_2) + \dots + P(s_n)$$
 
 样本空间$\Omega$中的元素有限，且每个元素发生的可能性相同，即：
-  $$P(A) = \frac{事件A试验结果数量}{样本空间的等可能试验结果数}$$
+$$P(A) = \frac{事件A试验结果数量}{样本空间的等可能试验结果数}$$
 
 #### 几何概型
 
 连续概率：$$P(A) = \frac{A的面积}{样本空间的面积}$$
 
 样本空间$\Omega$中的元素是连续的，且每个元素发生的可能性相同，即：
-  $$P(A) = \frac{A的面积}{样本空间的面积}$$
+$$P(A) = \frac{A的面积}{样本空间的面积}$$
 
 #### 概率的基本性质
 
 - 若$A \subset B$，则$P(A) \leq P(B)$
 - $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 - $P(A \cup B) \leq P(A) + P(B)$
-- $P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)$  （**容斥原理**）
+- $P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)$ （**容斥原理**）
 
 ### 条件概率
 
 #### 条件概率的定义
 
 事件$B$发生的条件下，事件$A$发生的概率，记为$P(A|B)$，定义为：
-  $$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
 
 #### 乘法公式
 
@@ -103,7 +92,7 @@ $$P(A_1 \cap A_2 \cap \dots \cap A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1 \cap A_2) \dot
 对于贝叶斯定理，可以理解为：
 
 一组互不相容的事件，看作为对于样本空间的一个分割，即$B_1 \cup B_2 \cup \dots \cup B_n = \Omega$，则：
-  $$P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)}$$
+$$P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)}$$
 
 再将分母用全概率公式展开，即可得到贝叶斯定理。
 
@@ -114,16 +103,16 @@ $$P(A_1 \cap A_2 \cap \dots \cap A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1 \cap A_2) \dot
 #### 独立性的定义
 
 事件$A$和事件$B$相互独立，当且仅当：
-  $$P(A \cap B) = P(A)P(B)$$
+$$P(A \cap B) = P(A)P(B)$$
 
 如果$P(B) \neq 0$，则上式等价于：
-  $$P(A|B) = P(A)$$
+$$P(A|B) = P(A)$$
 
 条件独立性：事件$A$和事件$B$在事件$C$发生的条件下相互独立，当且仅当：
-  $$P(A \cap B|C) = P(A|C)P(B|C)$$
+$$P(A \cap B|C) = P(A|C)P(B|C)$$
 
 多个事件的独立性：事件$A_1, A_2, \cdots, A_n$相互独立，当且仅当对于任意的$1 \leq i_1 < i_2 < \dots < i_k \leq n$，有：
-  $$P(A_{i_1} \cap A_{i_2} \cap \dots \cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \dots P(A_{i_k})$$
+$$P(A_{i_1} \cap A_{i_2} \cap \dots \cap A_{i_k}) = P(A_{i_1})P(A_{i_2}) \dots P(A_{i_k})$$
 
 需要注意的是，两两独立和相互独立是不同的，两两独立是指任意两个事件都相互独立，但是整体不一定独立。任意个数的事件出现与不出现，并不能影响其中任何一个或一部分事件的概率，这个时候，这些事件是相互独立的。 <!--这个地方有点难表述-->
 
@@ -139,24 +128,24 @@ $$P(A_1 \cap A_2 \cap \dots \cap A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1 \cap A_2) \dot
 #### 排列
 
 从$n$个元素中取出$k$个元素，且考虑元素的顺序，称为从$n$个元素中取出$k$个元素的排列，记为$A_n^k$，即：
-  $$A_n^k = n(n-1)(n-2)\dots(n-k+1) = \frac{n!}{(n-k)!}$$
+$$A_n^k = n(n-1)(n-2)\dots(n-k+1) = \frac{n!}{(n-k)!}$$
 
 #### 组合
 
 从$n$个元素中取出$k$个元素，且不考虑元素的顺序，称为从$n$个元素中取出$k$个元素的组合，记为$C_n^k$，即：
-  $$C_n^k = \frac{A_n^k}{k!} = \frac{n!}{k!(n-k)!}$$
+$$C_n^k = \frac{A_n^k}{k!} = \frac{n!}{k!(n-k)!}$$
 
-  也可以简单记作：
-  $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
+也可以简单记作：
+$$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 #### 分割
 
 将$n$个元素分成$k$组，每组至少有一个元素，称为将$n$个元素分成$k$组的分割，记为$S(n, k)$，即：
-  $$S(n, k) = \frac{1}{k!}\sum\limits_{i=0}^k(-1)^iC_k^i(n-i)^k$$
+$$S(n, k) = \frac{1}{k!}\sum\limits_{i=0}^k(-1)^iC_k^i(n-i)^k$$
 
-  或者简单记作：
+或者简单记作：
 
-  $$\binom{n}{n_1 , n_2 , \dots n_k} = \frac{n!}{n_1!n_2!\dots n_k!}$$
+$$\binom{n}{n_1 , n_2 , \dots n_k} = \frac{n!}{n_1!n_2!\dots n_k!}$$
 
 #### 二项式定理
 
