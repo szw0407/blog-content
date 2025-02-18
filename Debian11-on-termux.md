@@ -1,24 +1,8 @@
----
-title: 在 Termux 上安装 Debian 11 并启用桌面环境
-date: 2023-10-29
-tags:
-  - Termux
-  - Debian
-  - Linux
-  - Android
-  - Samsung
-  - Galaxy Tab S7 FE
-  - 骁龙 778G
-  - One UI 5.1.1
-  - Android 13
-  - Termux:X11
----
 # 在 Termux 上安装 Debian 11 并启用桌面环境
 
 > #### 为什么要安装 Debian 11？
 >
-> 最新版本的 Arch Linux 和 Debian 12 Bookworm 的 GUI 安装依赖的一个库，比较新的版本有个 bug 直接导致桌面环境无法启动。Debian 11 Bullseye 是我见到的，唯一一个有先例能正常启动桌面环境的 Proot-distro。
-> 本人的设备是 Samsung Galaxy Tab S7 FE，搭载了骁龙 778G 处理器，6GB RAM 和 128GB ROM，系统是 One UI 5.1.1 （基于 Android 13）；Termux 是 F-Droid 下载的最新版本，其他依赖都用的是理论上的最新版本。
+> 此前 GUI 安装依赖的一个库，比较新的版本有个 bug 直接导致桌面环境无法启动。Debian 11 Bullseye 那会的唯一一个有先例能正常启动桌面环境的 Proot-distro。不过现在似乎都可以正常运行了，我尝试过 Debian 12 并且成功了。
 
 > #### 为什么不用 VNC？
 >
@@ -44,21 +28,9 @@ tags:
 
 ## 安装 Debian 11
 
-由于 proot-distro 提供的已经是 Debian 12 了，我们需要手动指定版本号。
-
-1. 登入 [termux/proot-distro: An utility for managing installations of the Linux distributions in Termux.](https://github.com/termux/proot-distro)
-2. 阅读 README 中 Adding distribution 段。理论上应该在 Release 里面找对应于 Debian 11 的旧版本，但是由于他给了个样例而且版本肯定不晚于 Debian 11，所以我们直接用样例，到时候直接升级大版本就好了。
-
-    ```shell
-    DISTRO_NAME="Debian"
-    TARBALL_URL['aarch64']="https://github.com/termux/proot-distro/releases/download/v1.10.1/debian-aarch64-pd-v1.10.1.tar.xz"
-    TARBALL_SHA256['aarch64']="f34802fbb300b4d088a638c638683fd2bfc1c03f4b40fa4cb7d2113231401a21"
-    ```
-
-    把这个脚本保存在 `$PREFIX/etc/proot-distro` 并命名为 `debian-legacy.sh`，然后执行 `proot-distro install debian-legacy`，就可以安装这个旧版本 Debian 了。
-
-3. 安装完成后，输入 `proot-distro login debian-legacy`，就可以进入 Debian 的终端了。我暂时还没测试出来这是什么版本的 Debian ，但是我猜测早于 Debian 10 Buster ，因为居然它**不支持使用 HTTPS 的源 URL**。
-4. **重要**：更换源到 Debian bullseye 的源（本人参考的是使用[TUNA](https://mirror.tuna.tsinghua.edu.cn/help/debian/)），然后使用 `apt update && apt full-upgrade` 更新系统。注意此处不需要`sudo` 而且也没有安装 `sudo`，当前用户就是 root 用户；此外源选择 Debian 11 (bullseye)，其他都跟推荐的走就好了。注意在此之前千万**不要**安装任何包，否则依赖会直接出问题！如果不熟悉 Vim 的话，请先熟悉一下 Vim 的基本操作，因为唯一一个预装好的编辑器是 Vim！
+1. 输入 `proot-distro list` 查看可用的发行版，然后输入 `proot-distro install debian-oldstable` 安装 Debian 11。
+2. 输入 `proot-distro login debian-oldstable` 进入 Debian 11。
+3. 修改 `sources.list` 为清华源，然后更新系统。当然也可以使用其他源，或者根本不变——最多就是更新慢一点。
 
     ```bash
     vim /etc/apt/sources.list
@@ -66,7 +38,7 @@ tags:
     apt update && apt full-upgrade
     ```
 
-5. 更新完了系统，安装好 HTTPS 支持所需的包之后，把源换成 HTTPS，然后安装 `sudo`。
+4. 更新完了系统，安装好 HTTPS 支持所需的包之后，把源换成 HTTPS，然后安装 `sudo`。
 
     ```bash
     apt install apt-transport-https ca-certificates
@@ -76,7 +48,7 @@ tags:
     apt install sudo 
     ```
 
-6. 添加普通用户组并创建这个用户，并允许普通用户使用 `sudo`。
+5. 添加普通用户组并创建这个用户，并允许普通用户使用 `sudo`。
 
     ```bash
     groupadd storage
@@ -170,7 +142,7 @@ termux-x11 :0 &
 virgl_test_server_android &
 ```
 
-然后我们继续输入 `proot-distro login debian-legacy --user user --shared-tmp`，进入 Debian 11：
+然后我们继续输入 `proot-distro login debian-oldstable --user user --shared-tmp`，进入 Debian 11：
 
 ```bash
 export DISPLAY=:0
