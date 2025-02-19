@@ -29,7 +29,8 @@
 本人使用的环境：
 
 - MATLAB R2023b
-- Python 3.10.12, virtual environment created by Conda 4.10.3
+- Python 3.10.12
+- Anaconda
 - Pycharm Community
 - Visual Studio Code
 
@@ -782,6 +783,8 @@ z=(A\b)
 
 Python 最初是一种脚本语言，由 Guido van Rossum 于 1989 年圣诞节期间编写，后续愈发强大，成为一种通用编程语言。木纹的主要版本是 Python 3，可以在 [Python 官网](https://www.python.org) 查看具体的版本信息，推荐使用的版本是稳定版本，最好是在 security fix 阶段的版本，不推荐使用 pre-release 阶段的版本。
 
+此外目前有一个很大的问题，在 Python 3.13 中试验性地开放了 GIL，可能导致安装和使用一部分的包的时候出现一些奇怪的问题，比如需要重新编译，或者对于线程的使用有一些限制。因此，推荐使用 Python 3.12 或者更早的版本，直到这些包都能经过充分的测试可以稳定运行在 Python 3.13 上。
+
 Python 的强大不完全在于其简洁易学的语法特征。受到很多限制，其性能相较于 FORTRAN、C、C++ 等语言有所不足。但是 Python 有很多优秀的库，比如 NumPy、SciPy、Pandas、Matplotlib 等。这套生态成为了 Python 的重大优势，目前几乎可以完成所有的科学计算任务，而且那些库完全开源，可以**自由**、**免费**地使用。这些库基本上是社区维护的，或许在可靠性、准确性上比商用软件有一些欠缺，并且使用这些库导致的错误不会有商用软件那样完备优质的技术支持和服务等，也不会有任何维护者对项目的使用出现问题而产生的任何代价负责；但是出现各种问题的概率其实很低，而且社区的维护者乃至社区的各种网友会热情而尽力地解决问题。
 
 Python 默认安装的库非常有限，而绝大多数的库都在 PyPI 上。PyPI 是 Python Package Index 的缩写，是 Python 的第三方库的官方仓库。这些库开源通过 pip 安装。但是，由于可能存在各种库之间复杂的依赖关系，推荐使用的还是各种虚拟环境。
@@ -832,6 +835,30 @@ conda env create -f environment.yml -n $ENV_NAME  # 导入环境并指定环境�
 
 一些具体任务，比如线性规划、最优化、微分方程求解，可以使用 SciPy 的子库，比如 `scipy.optimize`、`scipy.integrate` 等。这部分内容查阅文档或者直接交给LLM解决就行，关键是给出具体的思路。
 
+举一个例子，比如说对于一个函数求解零点问题，可以使用 `scipy.optimize.root` 函数。下面的程序可以求解非线性方程$\sin(x^2) \exp(-x/3) + \cos(\pi x) \log(|x| + 1) - 2.5 = 0$的零点。
+
+首先安装 SciPy：
+
+```powershell
+conda create -n SampleEnv python=3.10 -c conda-forge
+conda activate SampleEnv
+conda install scipy
+# 接下来根据提示输入 y 即可
+```
+
+然后运行下面的程序（可以直接在命令行打开 Python 解释器，然后逐行输入或者直接一把粘贴进去）：
+
+```python
+import numpy as np
+from scipy.optimize import root
+
+def func(x):
+     return np.sin(x**2) * np.exp(-x/3) + np.cos(np.pi*x) * np.log(abs(x) + 1) - 2.5
+
+sol = root(func, 0.5)
+print(sol.x)
+```
+
 > 这部分内容有空再写吧，或许也不需要写了，有关的内容和资料太多了。
 
 ## 稍微写点关于 TeX 的东西
@@ -855,7 +882,7 @@ conda env create -f environment.yml -n $ENV_NAME  # 导入环境并指定环境�
 
 除此以外，目前还有一个新近开发并且生态日渐成熟、语法更加先进的新的排版语言 typst，很多非常熟悉$\LaTeX$的人在尝试后都愿意切换到它上面，或许对于一部分人而言可以试试。
 
-### 安装 tex 编译环境
+### 安装 TeX 编译环境
 
 对，这个东西是需要相对复杂的安装的，而且很多人在安装中就遇到了许多严重的问题。
 
@@ -869,7 +896,7 @@ Windows环境下面安装 Tex Live的教程非常多，我就强调几个要点�
 - 安装的路径和所有的环境变量都不可以有任何非ANSII的字符，可以在Windows环境变量里面查看，尤其是`%HOME%`、`%TEMP%`等，某些用户名里面有特殊字符的需要特别注意。全部改写，一劳永逸。
 - 安装完成之后配置好PATH，然后推荐使用 VS code 安装 Latex workshop 插件使用，配合 GitHub Copilot 等 AI 工具使用更舒适。
 
-此外，还可以尝试 MiKTeX 这个软件，或许会容易一些，最关键的是由于其根据需要安装包，就可以避免完整安装latex环境而占用巨大资源，安装了不必要的大量内容，甚至包括比如说排版五线谱、国际象棋的包，以及包括全世界各大大学的模板文件。自定义安装 Tex Live 也可以避免这个，但是很麻烦。总之就是自己折腾呗。
+此外，还可以尝试 MiKTeX 这个软件，或许会容易一些，最关键的是由于其根据需要安装包，就可以避免完整安装环境而占用巨大资源，安装了不必要的大量内容，甚至包括比如说排版五线谱、国际象棋的包，以及包括全世界各大大学的模板文件。此外 MiKTeX 也有一个很好的特性，就是可以自动下载缺失的包，而不需要手动去下载，还可以更方便地更新（而 Tex Live 的更新是非常麻烦的，基本上只能重装了），控制台的 GUI 也很容易使用。自定义安装 Tex Live 也可以避免这个，但是很麻烦。总之就是自己折腾呗。唯独有一个就是使用 xeLaTeX 编译的时候，可能需要手动再安装一个 perl 解释器，不然会报错。
 
 ### 简单的上手建议
 
