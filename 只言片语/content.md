@@ -17,7 +17,7 @@ title: 只言片语
 
 在第一次运行 `sudo` 的时候，会出现这样的提示：
 
-```bash
+```
 We trust you have received the usual lecture from the local System
 Administrator. It usually boils down to these three things:
 

@@ -1,10 +1,3 @@
----
-title: 折腾WSL2 openSUSE的一些记录
-date: 2023
-tags: [Linux, openSUSE, WSL, WSL2, Windows]
-categories: [Linux]
----
-
 # 折腾WSL2 openSUSE的一些记录
 
 这是本人第一次，从头开始折腾一个Linux系统。本人希望通过这次折腾，学习Linux的基本使用。
@@ -50,6 +43,8 @@ Python3安装的是Python3.11，如果要绑定`python`可以运行
 ```bash
 sudo ln -sf /usr/bin/python3 /usr/bin/python  # 实际上是做了一个指向 python3 的软链接
 ```
+
+> 不建议这么做，因为很多系统命令依赖于python2。
 
 openSUSE的包管理使用的是rpm，以及专用的zypper
 
