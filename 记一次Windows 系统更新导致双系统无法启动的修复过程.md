@@ -1,18 +1,3 @@
----
-title: 记一次 Windows 系统更新导致双系统无法启动的修复过程
-date: 2023-11-17 22:05:48
-tags: 
-- Windows
-- Linux
-- 双系统
-- GRUB
-- UEFI
-- 技术
-- 操作系统
-categories:
-- 技术
----
-
 # 记一次 Windows 系统更新导致双系统引导错误，无法启动的修复过程
 
 ## 背景
