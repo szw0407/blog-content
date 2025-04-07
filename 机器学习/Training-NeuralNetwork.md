@@ -145,3 +145,45 @@ $$
 $$
 \frac{\partial y}{\partial x} = \frac{\partial y}{\partial z} \cdot \frac{\partial z}{\partial x}
 $$
+
+### 反向传播
+
+对于加法节点$z = x + y$，我们可以得到：
+
+$$
+\begin{align*}
+\frac{\partial z}{\partial x} &= 1 \\
+\frac{\partial z}{\partial y} &= 1
+\end{align*}
+$$
+
+对于乘法节点$z = x \cdot y$，我们可以得到：
+
+$$
+\begin{align*}
+\frac{\partial z}{\partial x} &= y \\
+\frac{\partial z}{\partial y} &= x
+\end{align*}
+$$
+
+人话就是，比如一个乘法的节点是$200 \times 1.1 = 220$，其反向传播的传入值$z$，那么这个节点对$200$的求偏导很显然就是$1.1 \times z$而对$1.1$求偏导数就是$200 \times z$。
+
+接下来考虑激活函数，以ReLU函数为例，导数如下
+
+$$
+y = \begin{cases}
+1 \quad (x > 0) \\ 
+0 \quad ( x \leq0) \end{cases}
+$$
+
+那么反向传播的时候，如果下游大于0则传入下游，否则传0。
+
+对于Sigmoid函数，将其分解为一系列的过程：
+
+- $-1 \times x$
+- $1+ ans$
+- $exp(ans)$
+- $1+ans$
+- $1 \div ans$
+
+根据这个方式向前倒即可。
